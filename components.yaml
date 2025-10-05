@@ -1,0 +1,66 @@
+schemas:
+  IPinfo:
+    type: object
+    properties:
+      feedback_url:
+        type: string
+      exit_ip:
+        type: string
+      capital:
+        type: string
+      country_code:
+        type: string
+      country_name:
+        type: string
+      country_region:
+        type: string
+      time_zone:
+        type: string
+      domain_name:
+        type: string
+      currency:
+        type: string
+      flag_url:
+        type: string
+      domains:
+        type: array
+        items:
+          type: string
+      call_codes:
+        type: array
+        items:
+          type: string
+  Privacy:
+    type: object
+    properties:
+      is_proxy:
+        type: boolean
+      is_relay:
+        type: boolean
+      is_tor:
+        type: boolean
+      service_name:
+        type: string
+  ASN:
+    type: object
+    properties:
+      autonomous_system_number:
+        type: integer
+      autonomous_system_organization:
+        type: string
+  Agent:
+    type: object
+    properties:
+      is_agent:
+        type: boolean
+      service_name:
+        type: string
+  AuraResponse:
+    type: object
+    properties:
+      exit_ip:
+        type: string
+      country_code:
+        type: string
+      country_name:
+        type: string

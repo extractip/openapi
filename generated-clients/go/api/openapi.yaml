@@ -1,0 +1,246 @@
+openapi: 3.0.0
+info:
+  contact:
+    name: Geolocate API
+  description: GeolocateAPI
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: http://swagger.io/terms/
+  title: Geolocate API
+  version: 1.0.0
+servers:
+- url: https://api.extractip.com
+paths:
+  /geolocate:
+    get:
+      operationId: GeolocateExitIP
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/IPinfo"
+          description: Response message
+      summary: Get information about your exit IP
+  /geolocate/{ip}:
+    get:
+      operationId: GeolocateGivenIP
+      parameters:
+      - description: Interested IP address
+        explode: false
+        in: path
+        name: ip
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/IPinfo"
+          description: Response message
+      summary: Get information about given IP
+  /geolocate/domain/{domain}:
+    get:
+      operationId: GeolocateGivenDomain
+      parameters:
+      - description: Interested domain name
+        explode: false
+        in: path
+        name: domain
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/IPinfo"
+                type: array
+          description: Response message
+      summary: Get information about given domain
+  /privacy:
+    get:
+      operationId: PrivacyExitIP
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Privacy"
+          description: Response message
+      summary: Get privacy information about your exit IP
+  /privacy/{ip}:
+    get:
+      operationId: PrivacyGivenIP
+      parameters:
+      - description: Interested IP address
+        explode: false
+        in: path
+        name: ip
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Privacy"
+          description: Response message
+      summary: Get privacy information about given IP
+  /asn:
+    get:
+      operationId: ASNExitIP
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ASN"
+          description: Response message
+      summary: Get ASN information about your exit IP
+  /asn/{ip}:
+    get:
+      operationId: ASNGivenIP
+      parameters:
+      - description: Interested IP address
+        explode: false
+        in: path
+        name: ip
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ASN"
+          description: Response message
+      summary: Get ASN information about given IP
+  /agent:
+    get:
+      operationId: AgentExitIP
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Agent"
+          description: Response message
+      summary: Get agent information about your exit IP
+  /agent/{ip}:
+    get:
+      operationId: AgentGivenIP
+      parameters:
+      - description: Interested IP address
+        explode: false
+        in: path
+        name: ip
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Agent"
+          description: Response message
+      summary: Get agent information about given IP
+components:
+  schemas:
+    IPinfo:
+      example:
+        exit_ip: exit_ip
+        country_code: country_code
+        feedback_url: feedback_url
+        capital: capital
+        domain_name: domain_name
+        country_name: country_name
+        domains:
+        - domains
+        - domains
+        currency: currency
+        flag_url: flag_url
+        country_region: country_region
+        time_zone: time_zone
+        call_codes:
+        - call_codes
+        - call_codes
+      properties:
+        feedback_url:
+          type: string
+        exit_ip:
+          type: string
+        capital:
+          type: string
+        country_code:
+          type: string
+        country_name:
+          type: string
+        country_region:
+          type: string
+        time_zone:
+          type: string
+        domain_name:
+          type: string
+        currency:
+          type: string
+        flag_url:
+          type: string
+        domains:
+          items:
+            type: string
+          type: array
+        call_codes:
+          items:
+            type: string
+          type: array
+      type: object
+    Privacy:
+      example:
+        is_relay: true
+        service_name: service_name
+        is_tor: true
+        is_proxy: true
+      properties:
+        is_proxy:
+          type: boolean
+        is_relay:
+          type: boolean
+        is_tor:
+          type: boolean
+        service_name:
+          type: string
+      type: object
+    ASN:
+      example:
+        autonomous_system_organization: autonomous_system_organization
+        autonomous_system_number: 0
+      properties:
+        autonomous_system_number:
+          type: integer
+        autonomous_system_organization:
+          type: string
+      type: object
+    Agent:
+      example:
+        service_name: service_name
+        is_agent: true
+      properties:
+        is_agent:
+          type: boolean
+        service_name:
+          type: string
+      type: object

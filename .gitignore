@@ -1,0 +1,14 @@
+# JetBrains IDEs
+.idea
+
+# macOS
+.DS_Store
+
+# Log files
+*.log
+
+# Vim swap files
+*.swp
+
+# OpenAPI Generator metadata
+**/.openapi-generator

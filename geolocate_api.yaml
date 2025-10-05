@@ -1,0 +1,150 @@
+openapi: "3.0.0"
+info:
+  version: 1.0.0
+  title: Geolocate API
+  description: GeolocateAPI
+  termsOfService: http://swagger.io/terms/
+  contact:
+    name: Geolocate API
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+  - url: https://api.extractip.com
+paths:
+  /geolocate:
+    get:
+      summary: Get information about your exit IP
+      operationId: GeolocateExitIP
+      responses:
+        "200":
+          description: Response message
+          content:
+            application/json:
+              schema:
+                $ref: 'components.yaml#/schemas/IPinfo'
+  /geolocate/{ip}:
+    get:
+      summary: Get information about given IP
+      operationId: GeolocateGivenIP
+      parameters:
+        - in: path
+          name: ip
+          required: true
+          schema:
+            type: string
+          description: Interested IP address
+      responses:
+        "200":
+          description: Response message
+          content:
+            application/json:
+              schema:
+                $ref: 'components.yaml#/schemas/IPinfo'
+  /geolocate/domain/{domain}:
+    get:
+      summary: Get information about given domain
+      operationId: GeolocateGivenDomain
+      parameters:
+        - in: path
+          name: domain
+          required: true
+          schema:
+            type: string
+          description: Interested domain name
+      responses:
+        "200":
+          description: Response message
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: 'components.yaml#/schemas/IPinfo'
+  /privacy:
+    get:
+      summary: Get privacy information about your exit IP
+      operationId: PrivacyExitIP
+      responses:
+        "200":
+          description: Response message
+          content:
+            application/json:
+              schema:
+                $ref: 'components.yaml#/schemas/Privacy'
+  /privacy/{ip}:
+    get:
+      summary: Get privacy information about given IP
+      operationId: PrivacyGivenIP
+      parameters:
+        - in: path
+          name: ip
+          required: true
+          schema:
+            type: string
+          description: Interested IP address
+      responses:
+        "200":
+          description: Response message
+          content:
+            application/json:
+              schema:
+                $ref: 'components.yaml#/schemas/Privacy'
+  /asn:
+    get:
+      summary: Get ASN information about your exit IP
+      operationId: ASNExitIP
+      responses:
+        "200":
+          description: Response message
+          content:
+            application/json:
+              schema:
+                $ref: 'components.yaml#/schemas/ASN'
+  /asn/{ip}:
+    get:
+      summary: Get ASN information about given IP
+      operationId: ASNGivenIP
+      parameters:
+        - in: path
+          name: ip
+          required: true
+          schema:
+            type: string
+          description: Interested IP address
+      responses:
+        "200":
+          description: Response message
+          content:
+            application/json:
+              schema:
+                $ref: 'components.yaml#/schemas/ASN'
+  /agent:
+    get:
+      summary: Get agent information about your exit IP
+      operationId: AgentExitIP
+      responses:
+        "200":
+          description: Response message
+          content:
+            application/json:
+              schema:
+                $ref: 'components.yaml#/schemas/Agent'
+  /agent/{ip}:
+    get:
+      summary: Get agent information about given IP
+      operationId: AgentGivenIP
+      parameters:
+        - in: path
+          name: ip
+          required: true
+          schema:
+            type: string
+          description: Interested IP address
+      responses:
+        "200":
+          description: Response message
+          content:
+            application/json:
+              schema:
+                $ref: 'components.yaml#/schemas/Agent'

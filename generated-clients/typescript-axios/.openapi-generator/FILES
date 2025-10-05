@@ -1,0 +1,13 @@
+.gitignore
+.npmignore
+api.ts
+base.ts
+common.ts
+configuration.ts
+docs/ASN.md
+docs/Agent.md
+docs/DefaultApi.md
+docs/IPinfo.md
+docs/Privacy.md
+git_push.sh
+index.ts
